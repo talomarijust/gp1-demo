@@ -21,10 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install flask bandit
+          pip install flask pytest pytest-flask bandit
 
-      - name: Run Unit Tests
-        run: python -m unittest discover -s . -p "test_*.py"
+      - name: Run Pytest
+        run: pytest -v --disable-warnings
+
 
       - name: Run Security Scan
         run: bandit -r .
